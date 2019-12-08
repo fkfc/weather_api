@@ -6,6 +6,7 @@ class Database:
     _mutex = Lock()
     _con = None
     _database_file = "weather.db"
+    _schema_file = "./weather_api/db/schema.sql"
 
     @staticmethod
     def execute(sql, *params):
@@ -33,23 +34,8 @@ class Database:
 
     @staticmethod
     def _create_database(cur):
-        sql = "\
-            CREATE TABLE IF NOT EXISTS cities(\
-                id INTEGER PRIMARY KEY,\
-                name TEXT,\
-                state CHAR(50),\
-                country CHAR(50)\
-            )"
-        Database._execute(cur, sql)
-        
-        sql = "\
-            CREATE TABLE IF NOT EXISTS forecasts(\
-                id INTEGER PRIMARY KEY AUTOINCREMENT,\
-                city INTEGER,\
-                date CHAR(10),\
-                rain_probability REAL,\
-                rain_precipitation REAL,\
-                temperature_min REAL,\
-                temperature_max REAL\
-            )"
-        Database._execute(cur, sql)
+        fd = open(Database._schema_file, 'r')
+        sql = fd.read()
+        fd.close()
+        for statement in sql.split(";"): Database._execute(cur, statement)
+
