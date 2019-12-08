@@ -1,4 +1,4 @@
 *.pyc
 .pytest_cache/
 weather.db
-tests/__pycache__
+tests/__pycache__/
