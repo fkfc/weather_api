@@ -19,22 +19,23 @@ PRECIPITATION_2 = 20
 DATE_1 = "2019-12-01"
 DATE_2 = "2019-12-02"
 
-@pytest.mark.parametrize("id,name,state", [
-    (CITY_ID_1, CITY_NAME_1, CITY_STATE_1),
-    (CITY_ID_2, CITY_NAME_2, CITY_STATE_2),
-    (CITY_ID_2, CITY_NAME_1, CITY_STATE_1)
+@pytest.mark.parametrize("id,name,state,country", [
+    (CITY_ID_1, CITY_NAME_1, CITY_STATE_1, CITY_COUNTRY_1),
+    (CITY_ID_2, CITY_NAME_2, CITY_STATE_2, CITY_COUNTRY_1),
+    (CITY_ID_2, CITY_NAME_1, CITY_STATE_1, CITY_COUNTRY_1)
 ])
 
-def test_city_dict(id, name, state):
-    city = City(id, name, state)
+def test_city_dict(id, name, state, country):
+    city = City(id, name, state, country)
     city_dict = city.to_dict()
     assert city_dict['id'] == id
     assert city_dict['name'] == name
     assert city_dict['state'] == state
+    assert city_dict['country'] == country
 
 @pytest.mark.parametrize("city,date,rain_probability,rain_precipitation,temperature_min,temperature_max", [
-    (City(CITY_ID_1, CITY_NAME_1, CITY_STATE_1), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_1, TEMPERATURE_2),
-    (City(CITY_ID_2, CITY_NAME_2, CITY_STATE_2), DATE_2, PROBABILITY_2, PRECIPITATION_2, TEMPERATURE_3, TEMPERATURE_4)
+    (City(CITY_ID_1, CITY_NAME_1, CITY_STATE_1, CITY_COUNTRY_1), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_1, TEMPERATURE_2),
+    (City(CITY_ID_2, CITY_NAME_2, CITY_STATE_2, CITY_COUNTRY_1), DATE_2, PROBABILITY_2, PRECIPITATION_2, TEMPERATURE_3, TEMPERATURE_4)
 ])
 
 def test_forecast_dict(city, date, rain_probability, rain_precipitation, temperature_min, temperature_max):
@@ -51,9 +52,9 @@ def test_forecast_dict(city, date, rain_probability, rain_precipitation, tempera
         DATE_1,
         DATE_2,
         [
-            Forecast(City(CITY_ID_1, CITY_NAME_1, CITY_STATE_1), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_1, TEMPERATURE_2),
-            Forecast(City(CITY_ID_1, CITY_NAME_1, CITY_STATE_1), DATE_2, PROBABILITY_1, PRECIPITATION_2, TEMPERATURE_1, TEMPERATURE_2),
-            Forecast(City(CITY_ID_2, CITY_NAME_2, CITY_STATE_2), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_3, TEMPERATURE_4)
+            Forecast(City(CITY_ID_1, CITY_NAME_1, CITY_STATE_1, CITY_COUNTRY_1), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_1, TEMPERATURE_2),
+            Forecast(City(CITY_ID_1, CITY_NAME_1, CITY_STATE_1, CITY_COUNTRY_1), DATE_2, PROBABILITY_1, PRECIPITATION_2, TEMPERATURE_1, TEMPERATURE_2),
+            Forecast(City(CITY_ID_2, CITY_NAME_2, CITY_STATE_2, CITY_COUNTRY_1), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_3, TEMPERATURE_4)
         ],
         CITY_ID_2,
         TEMPERATURE_4,
@@ -63,9 +64,9 @@ def test_forecast_dict(city, date, rain_probability, rain_precipitation, tempera
         DATE_1,
         DATE_2,
         [
-            Forecast(City(CITY_ID_1, CITY_NAME_1, CITY_STATE_1), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_3, TEMPERATURE_4),
-            Forecast(City(CITY_ID_2, CITY_NAME_2, CITY_STATE_2), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_1, TEMPERATURE_2),
-            Forecast(City(CITY_ID_2, CITY_NAME_2, CITY_STATE_2), DATE_2, PROBABILITY_1, PRECIPITATION_2, TEMPERATURE_1, TEMPERATURE_2),
+            Forecast(City(CITY_ID_1, CITY_NAME_1, CITY_STATE_1, CITY_COUNTRY_1), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_3, TEMPERATURE_4),
+            Forecast(City(CITY_ID_2, CITY_NAME_2, CITY_STATE_2, CITY_COUNTRY_1), DATE_1, PROBABILITY_1, PRECIPITATION_1, TEMPERATURE_1, TEMPERATURE_2),
+            Forecast(City(CITY_ID_2, CITY_NAME_2, CITY_STATE_2, CITY_COUNTRY_1), DATE_2, PROBABILITY_1, PRECIPITATION_2, TEMPERATURE_1, TEMPERATURE_2),
         ],
         CITY_ID_1,
         TEMPERATURE_4,
