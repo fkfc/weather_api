@@ -6,10 +6,13 @@
 - Docker
 
     Build docker image:
+
         ```
         $ docker build -t weather_api . 
         ```
+    
     Launch image:
+
         ```
         $ docker run -d -p 5000:5000 weather_api
         ```
@@ -17,16 +20,21 @@
 - Manually
 
     Install dependencies:
+
         ```
         $ pip install -r requirements.txt
         ```
+
     Start the service:
+
         ```
         $ python run.py
         ```
 
 - Running Tests
+
     Tests were made using pytest:
+
      ```$ python -m pytest```
 
 
@@ -42,7 +50,7 @@ Default port: 5000
 
 **URL**
 
-http://host:port/cidade?id=\<city_id\>
+```http://host:port/cidade?id=<city_id>```
 
 Example: http://localhost:5000/cidade?id=4705
 
@@ -145,7 +153,7 @@ Example: http://localhost:5000/cidade?id=4705
 
 **URL**
 
-http://host:port/analise?data_inicial=\<start_date\>&data_final=\<end_date\>
+```http://host:port/analise?data_inicial=<start_date>&data_final=<end_date>```
 
 Example: http://localhost:5000/analise?data_inicial=2019-01-01&data_final=2019-12-31
 
