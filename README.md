@@ -6,30 +6,27 @@
 - Docker
 
     Build docker image:
-
-        ```
+        
         $ docker build -t weather_api . 
-        ```
+        
     
     Launch image:
 
-        ```
         $ docker run -d -p 5000:5000 weather_api
-        ```
 
 - Manually
 
     Install dependencies:
 
-        ```
+        
         $ pip install -r requirements.txt
-        ```
+        
 
     Start the service:
 
-        ```
+        
         $ python run.py
-        ```
+        
 
 - Running Tests
 
