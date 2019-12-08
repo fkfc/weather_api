@@ -18,7 +18,9 @@ class WeatherService:
             return None
         else:
             response_data = response.json()
-            city = CityRepository.save_city(City(city_id, response_data["name"], response_data["state"]))
+            city = CityRepository.save_city(
+                City(city_id, response_data["name"], response_data["state"], response_data["country"])
+            )
             return [
                 ForecastRepository.save_forecast(
                     Forecast(

@@ -1,8 +1,9 @@
 class City:
-    def __init__(self, id, name, state):
+    def __init__(self, id, name, state, country):
         self.id = id
-        self.name = name
-        self.state = state
+        self.name = name.strip()
+        self.state = state.strip()
+        self.country = country.strip()
 
     # custom comparator, overrides default method
     def __eq__(self, other):
@@ -19,14 +20,15 @@ class City:
         return {
             "id": self.id,
             "name": self.name,
-            "state": self.state
+            "state": self.state,
+            "country": self.country
         }
 
 
 class Forecast:
     def __init__(self, city, date, rain_probability, rain_precipitation, temperature_min, temperature_max):
         self.city = city
-        self.date = date
+        self.date = date.strip()
         self.rain_probability = float(rain_probability)
         self.rain_precipitation = float(rain_precipitation)
         self.temperature_min = float(temperature_min)

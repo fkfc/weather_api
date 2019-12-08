@@ -37,7 +37,8 @@ class Database:
             CREATE TABLE IF NOT EXISTS cities(\
                 id INTEGER PRIMARY KEY,\
                 name TEXT,\
-                state CHAR(50)\
+                state CHAR(50),\
+                country CHAR(50)\
             )"
         Database._execute(cur, sql)
         

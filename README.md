@@ -60,7 +60,8 @@ Example: http://localhost:5000/cidade?id=4705
   "city": {
     "id": "4705", 
     "name": "Itacajá", 
-    "state": "TO"
+    "state": "TO",
+    "country": "BR"
   }, 
   "forecasts": [
     {
@@ -166,7 +167,8 @@ Example: http://localhost:5000/analise?data_inicial=2019-01-01&data_final=2019-1
     "city": {
       "id": 4705, 
       "name": "Itacajá", 
-      "state": "TO"
+      "state": "TO",
+      "country": "BR"
     }, 
     "temperature": 37.0
   },
@@ -176,7 +178,8 @@ Example: http://localhost:5000/analise?data_inicial=2019-01-01&data_final=2019-1
       "city": {
         "id": 4704, 
         "name": "Babaçulândia", 
-        "state": "TO"
+        "state": "TO",
+        "country": "BR"
       }
     }, 
     {
@@ -184,7 +187,8 @@ Example: http://localhost:5000/analise?data_inicial=2019-01-01&data_final=2019-1
       "city": {
         "id": 4705, 
         "name": "Itacajá", 
-        "state": "TO"
+        "state": "TO",
+        "country": "BR"
       }
     }, 
     {
@@ -192,7 +196,8 @@ Example: http://localhost:5000/analise?data_inicial=2019-01-01&data_final=2019-1
       "city": {
         "id": 4703, 
         "name": "Duplo Céu", 
-        "state": "SP"
+        "state": "SP",
+        "country": "BR"
       }
     }
   ]

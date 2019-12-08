@@ -7,18 +7,18 @@ class CityRepository:
         existing_city = CityRepository.get_by_id(city.id)
         if existing_city == None:
             Database.execute(
-                "INSERT INTO cities (id, name, state) values (?, ?, ?)",
-                (city.id, city.name, city.state)
+                "INSERT INTO cities (id, name, state, country) values (?, ?, ?, ?)",
+                (city.id, city.name, city.state, city.country)
             )
         return city
 
     @staticmethod
     def get_by_id(city_id):
         rows = Database.execute(
-            "SELECT name, state FROM cities WHERE id = ?",
+            "SELECT name, state, country FROM cities WHERE id = ?",
             (city_id,)
         )
-        return City(city_id, rows[0][0], rows[0][1]) if len(rows) > 0 else None
+        return City(city_id, rows[0][0], rows[0][1], rows[0][2]) if len(rows) > 0 else None
 
 class ForecastRepository:
     @staticmethod
